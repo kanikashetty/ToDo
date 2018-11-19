@@ -1,0 +1,37 @@
+{% extends 'ToDoApp/base.html' %}
+
+{% block body %}
+
+<a id="#addclient" href="{% url 'addToDo'%}"class="button success" style="margin-left:45%;margin-top:30px">Add ToDo</a>
+<table class="table hovered" style="margin-top:20px">
+    <thead>
+        <tr>
+            <th class="text-center">Title</th>
+            <th class="text-center">Description</th>
+            <th class="text-center">Deadline Date</th>
+            <th class="text-center">Status</th>
+            <th class="text-center">Created Time</th>
+            <th class="text-center">Last Modified Time</th>
+            <th class="text-center">Modify</th>
+            <th class="text-center">Delete</th>
+
+
+        </tr>
+    </thead>
+    
+    <tbody>
+            {% for item in ToDo_list %}
+            <tr>
+                <td class="text-center">{{ item.Title}}</td>
+                <td class="text-center">{{ item.Description}}</td>
+                <td class="text-center">{{ item.Deadline_Date}}</td>
+                <td class="text-center">{{ item.Status}}</td>
+                <td class="text-center">{{ item.CreatedAt}}</td>
+                <td class="text-center">{{ item.ModifiedAt}}</td>
+                <td><a href="{% url 'updateToDo' item.Title %}"><i class="icon-pencil fg-black" title="Edit List"></i></a></td>
+                <td><a href="{% url 'deleteToDo' item.Title %}"><i title="Delete List" class="icon-remove fg-red" onclick="return confirm('Are you sure of deleting?');"></i></a></td>
+            </tr>
+            {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

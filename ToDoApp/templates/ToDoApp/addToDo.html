@@ -1,0 +1,41 @@
+{% extends 'ToDoApp/base.html' %}
+{% block body%}
+<div class = "row" style="margin-top:50px" >
+        <div class="col-md-5 col-md-offset-4" style="background-color:white; margin:auto; width:50%">          
+    
+<form action="{% url 'addToDo'%}" method="POST">
+        {% csrf_token %}
+        <fieldset style="width:50%; margin:auto;padding-bottom:10px">
+            <p style="text-align:center;font-size:20px;padding-top:10px"><b>Add ToDo Task</b></p>
+            <div style="margin-top:30px" >
+            <label>Title:</label>
+            <div class="input-control text" data-role="input-control" >
+                <input type="text" placeholder="type text" name = 'title' required> 
+                <button class="btn-clear" tabindex="-1" type="button"></button>
+            </div></br>
+            <label>Description:</label>
+            <div class="input-control textarea" data-role="input-control" >
+                <textarea placeholder="type text" name = 'description'>
+                </textarea>
+            </div></br>
+            <label>Deadline Date:</label>
+            <div class="input-control text" data-role="input-control" >
+                <input type="datetime-local" name = 'deadline' required>
+                <!-- <button class="btn-clear" tabindex="-1" type="button"></button> -->
+            </div></br>
+            <label>Status:</label>
+            <div class="input-control select" data-role="input-control" >
+                    <select name="status" required>
+                        <option>In Progress</option>
+                        <option>Completed</option>
+                        <option>Pending</option>
+                    </select>
+            </div></br>
+            
+            <input type="submit"  value="Submit" >
+        </div>
+        </fieldset>
+</form>
+</div>
+</div>
+{% endblock %}
